@@ -1,3 +1,6 @@
+About Repo:
+So repo is part of react redux training in IBM..so day by day i will we be adding here.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
