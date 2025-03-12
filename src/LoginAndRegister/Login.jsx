@@ -1,8 +1,9 @@
 import { React, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const storedUser = JSON.parse(localStorage.getItem("user"));
 
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -11,12 +12,14 @@ export default function Login() {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     if (
       storedUser &&
-      storedUser.email == email &&
-      storedUser.password == password
+      storedUser.email === email &&
+      storedUser.password === password
     ) {
-      alert("Login Success");
+      navigate("/dashboard");
     } else {
-      alert("invalid password");
+      setError("invalid credentials");
+      console.log(error)
+      alert("invalid credentials");
     }
   };
 
