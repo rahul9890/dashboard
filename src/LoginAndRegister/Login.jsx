@@ -12,7 +12,8 @@ export default function Login() {
     setIsDisabled(!email || !password);
   }, [email, password]);
 
-  const handleLoginClick = () => {
+  const handleLoginClick = (e) => {
+    e.preventDefault();
     const storedUser = JSON.parse(localStorage.getItem("user"));
     if (
       storedUser &&
