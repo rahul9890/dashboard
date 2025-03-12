@@ -1,12 +1,16 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  useEffect(() => {
+    setIsDisabled(!email || !password);
+  }, [email, password]);
 
   const handleLoginClick = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -18,7 +22,7 @@ export default function Login() {
       navigate("/dashboard");
     } else {
       setError("invalid credentials");
-      console.log(error)
+      console.log(error);
       alert("invalid credentials");
     }
   };
@@ -45,7 +49,9 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
-        <button onClick={handleLoginClick}>Login</button>
+        <button disabled={isDisabled} onClick={handleLoginClick}>
+          Login
+        </button>
       </form>
     </>
   );
