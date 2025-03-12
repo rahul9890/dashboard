@@ -1,25 +1,32 @@
 import { React, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
+import { setEmail } from "../ReduxStore/authSlice";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [inputEmail, setInputEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
-    setIsDisabled(!email || !password);
-  }, [email, password]);
+    setIsDisabled(!inputEmail || !password);
+  }, [inputEmail, password]);
 
   const handleLoginClick = (e) => {
     e.preventDefault();
     const storedUser = JSON.parse(localStorage.getItem("user"));
     if (
       storedUser &&
-      storedUser.email === email &&
+      storedUser.email === inputEmail &&
       storedUser.password === password
     ) {
+      console.log("email in login" + inputEmail);
+      dispatch(setEmail(inputEmail));
       navigate("/dashboard");
     } else {
       setError("invalid credentials");
@@ -35,10 +42,10 @@ export default function Login() {
         Email:
         <input
           type="text"
-          name="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          name="inputEmail"
+          id="inputEmail"
+          value={inputEmail}
+          onChange={(e) => setInputEmail(e.target.value)}
         />
         <br />
         Password:{" "}

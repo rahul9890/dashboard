@@ -4,19 +4,23 @@ import Welcomepage from "./LoginAndRegister/Welcomepage";
 import Login from "./LoginAndRegister/Login";
 import Register from "./LoginAndRegister/Register";
 import Dashboard from "./DashboardHomePage/Dashboard";
+import { Provider } from "react-redux";
+import store from "./ReduxStore/store";
 
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Routes>
-          <Route path="/" element={<Welcomepage />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/register" element={<Register />}></Route>
-          <Route path="/dashboard" element={<Dashboard/>}></Route>
-        </Routes>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Welcomepage />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/register" element={<Register />}></Route>
+            <Route path="/dashboard" element={<Dashboard />}></Route>
+          </Routes>
+        </Router>
+      </Provider>
     </div>
   );
 }
