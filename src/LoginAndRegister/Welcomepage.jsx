@@ -21,14 +21,20 @@ export default function Welcomepage() {
         Welcome to Users Module
       </h2>
       <div className="login-box">
-        <p>
-          <strong>Existing Users</strong>
+        <p style={{ marginTop: "10%" }}>
+          <strong>Existing Users?</strong>
         </p>
-        <button onClick={handleLoginClick}>Login</button>
-        <p>
-          <strong>New Users</strong>
-        </p>
-        <button onClick={handleRegisterClick}>Register</button>
+        <button onClick={handleLoginClick} className="login-button">
+          Login
+        </button>
+        <div style={{marginTop:"25%"}}>
+          <p style={{ marginBottom: "3%", marginTop: "10px" }}>
+            <strong style={{ color: "#b700ff" }}>New Users?</strong>
+          </p>
+          <button onClick={handleRegisterClick} className="register-button">
+            Register
+          </button>
+        </div>
       </div>
     </div>
   );
