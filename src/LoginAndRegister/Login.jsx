@@ -12,7 +12,6 @@ export default function Login() {
   const [isDisabled, setIsDisabled] = useState(true);
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     setIsDisabled(!inputEmail || !password);
   }, [inputEmail, password]);
@@ -36,31 +35,35 @@ export default function Login() {
   };
 
   return (
-    <>
-      <form>
-        <h2>Login</h2>
-        Email:
-        <input
-          type="text"
-          name="inputEmail"
-          id="inputEmail"
-          value={inputEmail}
-          onChange={(e) => setInputEmail(e.target.value)}
-        />
-        <br />
-        Password:{" "}
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <br />
-        <button disabled={isDisabled} onClick={handleLoginClick}>
-          Login
-        </button>
-      </form>
-    </>
+    
+      <div >
+        <div >
+          <form>
+            <h2>Login</h2>
+            Email:
+            <input
+              type="text"
+              name="inputEmail"
+              id="inputEmail"
+              value={inputEmail}
+              onChange={(e) => setInputEmail(e.target.value)}
+            />
+            <br />
+            Password:{" "}
+            <input
+              type="password"
+              name="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <br />
+            <button disabled={isDisabled} onClick={handleLoginClick}>
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
+ 
   );
 }

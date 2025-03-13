@@ -11,11 +11,8 @@ const authSlice = createSlice({
     setEmail: (state, action) => {
       state.email = action.payload;
     },
-    logout: (state) => {
-      state.email = ""; // Reset email on logout
-    },
   },
 });
 
-export const { setEmail, logout } = authSlice.actions;
-export default authSlice.reducer; // Corrected export
+export const { setEmail } = authSlice.actions;
+export default authSlice.reducer; 
