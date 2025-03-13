@@ -31,37 +31,47 @@ export default function Register() {
   };
 
   return (
-    <>
-      <h2>Register</h2>
-      <form>
-        Fullname:
-        <input type="text" />
-        <br />
-        Email:
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br />
-        Password:
-        <input
-          type="password"
-          name="password"
-          id="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <br />
-        Confirm Password
-        <input
-          type="confirmPassword"
-          name="confirmPassword"
-          id="confirmPassword"
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-        <br />
-        <input type="submit" value="Register" disabled={isDisabled} onClick={handleRegisterClick} />
-      </form>
-    </>
+    <div className="login-container">
+      <div className="login">
+        <h2>Register</h2>
+        <form>
+          Fullname:
+          <input type="text" placeholder="Enter your Full Name here" />
+          <br />
+          Email:
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email here"
+          />
+          <br />
+          Password:
+          <input
+            type="password"
+            name="password"
+            id="password"
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password here"
+          />
+          <br />
+          Confirm Password
+          <input
+            type="confirmPassword"
+            name="confirmPassword"
+            id="confirmPassword"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder="Confirm password"
+          />
+          <br />
+          <input
+            type="submit"
+            value="Register"
+            disabled={isDisabled}
+            onClick={handleRegisterClick}
+          />
+        </form>
+      </div>
+    </div>
   );
 }
