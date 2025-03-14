@@ -14,12 +14,7 @@ export default function Welcomepage() {
 
   return (
     <div className="login-container">
-      <h2
-        className="welcome-heading"
-        style={{ color: "#122287", fontSize: "2rem", fontWeight: "bold" }}
-      >
-        Welcome to Users Module
-      </h2>
+      <h2 className="welcome-heading">Welcome to Users Module</h2>
       <div className="login-box">
         <p style={{ marginTop: "10%" }}>
           <strong>Existing Users?</strong>
@@ -27,7 +22,7 @@ export default function Welcomepage() {
         <button onClick={handleLoginClick} className="login-button">
           Login
         </button>
-        <div style={{marginTop:"25%"}}>
+        <div style={{ marginTop: "25%" }}>
           <p style={{ marginBottom: "3%", marginTop: "10px" }}>
             <strong style={{ color: "#b700ff" }}>New Users?</strong>
           </p>
