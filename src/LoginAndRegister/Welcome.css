@@ -15,15 +15,15 @@
   font-size: 2rem;
   font-weight: bold;
   position: absolute;
-  top: 15px;
-  left: 60%;
-  transform: translateX(-50%);
+  top: 45px;
+  left: 45%;
+
 }
 
 .login-box {
   background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
   padding: 20px;
-  margin-top: 130px;
+  margin-top: 160px;
   margin-right: 27%;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -44,8 +44,6 @@
   transition: all 0.3s ease;
   display: block;
   width: 100%;
-  margin: 10px 0;
-  margin-bottom: 8%;
 }
 
 .register-button {
