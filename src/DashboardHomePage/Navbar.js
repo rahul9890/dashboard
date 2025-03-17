@@ -9,6 +9,10 @@ export default function Navbar() {
     navigate("/groupchat");
   };
 
+    const handleManageUsers = (e) => {
+        e.preventDefault();
+        navigate("/manageusers");
+    };
   return (
     <nav
       className="navbar bg-dark border-bottom border-body fixed-top"
@@ -23,6 +27,7 @@ export default function Navbar() {
           >
             Group Chat
           </Link>
+          <Link to="/manageusers" className="btn btn-outline-light me-2" onClick={handleManageUsers}>ManageUser</Link>
         </div>
       </div>
     </nav>
