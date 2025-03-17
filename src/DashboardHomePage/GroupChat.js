@@ -5,7 +5,7 @@ export default function GroupChat() {
     return (
       <>
         <Navbar />
-        <div style={{ marginTop: "15%" }}>In GroupChat</div>
+        <div style={{ marginTop: "10%" }}>In GroupChat</div>
       </>
     );
 }

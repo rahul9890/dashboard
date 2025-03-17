@@ -20,7 +20,7 @@ export default function Navbar() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link
-                className="nav-link active"
+                className="btn btn-primary mx-1"
                 aria-current="page"
                 to="/groupchat"
               >
@@ -29,7 +29,7 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               <Link
-                className="nav-link active"
+                className="btn btn-primary mx-1"
                 aria-current="page"
                 to="/manageusers"
               >
@@ -37,7 +37,17 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <Link
+                className="btn btn-primary mx-1"
+                aria-current="page"
+                to="/managedocuments"
+              >
+                ManageDocument
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="btn btn-primary mx-1" aria-current="page" to="/">
                 LogOut
               </Link>
             </li>

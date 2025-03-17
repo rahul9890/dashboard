@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import store from "./ReduxStore/store";
 import GroupChat from "./DashboardHomePage/GroupChat";
 import ManageUser from "./DashboardHomePage/ManageUser";
+import ManageDocument from "./DashboardHomePage/ManageDocument";
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
             <Route path="/register" element={<Register />}></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
             <Route path="/groupchat" element={<GroupChat />}></Route>
-            <Route path="/manageusers" element={<ManageUser/>}></Route>
+            <Route path="/manageusers" element={<ManageUser />}></Route>
+            <Route path="/ManageDocuments" element={<ManageDocument/>}></Route>
           </Routes>
         </Router>
       </Provider>
