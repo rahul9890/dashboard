@@ -1,33 +1,47 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
-  const navigate = useNavigate();
-
-  const handleGroupChatButton = (e) => {
-    e.preventDefault();
-    navigate("/groupchat");
-  };
-
-    const handleManageUsers = (e) => {
-        e.preventDefault();
-        navigate("/manageusers");
-    };
   return (
-    <nav
-      className="navbar bg-dark border-bottom border-body fixed-top"
-      data-bs-theme="dark"
-    >
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <div className="navbar-nav">
-          <Link
-            to="/groupchat"
-            className="btn btn-outline-light me-2"
-            onClick={handleGroupChatButton}
-          >
-            Group Chat
-          </Link>
-          <Link to="/manageusers" className="btn btn-outline-light me-2" onClick={handleManageUsers}>ManageUser</Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <Link
+                className="nav-link active"
+                aria-current="page"
+                to="/groupchat"
+              >
+                GroupChat
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link active"
+                aria-current="page"
+                to="/manageusers"
+              >
+                ManageUsers
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/">
+                LogOut
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
