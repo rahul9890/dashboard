@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
+
+   
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -17,8 +20,8 @@ export default function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
+          <ul className="navbar-nav w-100 d-flex">
+            <li className="nav-item flex-grow-1  border border-dark border-2 bg-primary">
               <Link
                 className="btn btn-primary mx-1"
                 aria-current="page"
@@ -27,7 +30,7 @@ export default function Navbar() {
                 GroupChat
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item flex-grow-1 border border-dark border-2 bg-primary">
               <Link
                 className="btn btn-primary mx-1"
                 aria-current="page"
@@ -36,7 +39,7 @@ export default function Navbar() {
                 ManageUsers
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item flex-grow-1 border border-dark border-2 bg-primary">
               <Link
                 className="btn btn-primary mx-1"
                 aria-current="page"
@@ -46,7 +49,7 @@ export default function Navbar() {
               </Link>
             </li>
 
-            <li className="nav-item">
+            <li className="nav-item flex-grow-1 border border-dark border-2 bg-primary">
               <Link className="btn btn-primary mx-1" aria-current="page" to="/">
                 LogOut
               </Link>
