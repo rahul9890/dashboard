@@ -1,44 +1,64 @@
-import React, { useState } from 'react'
-import Navbar from './Navbar'
+import React, { useState } from "react";
+import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
 
 export default function ManageUser() {
-
   const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users")));
 
-  { console.log("from manageusers component:"+users) };
+  const navigate = useNavigate();
 
-    return (
-      <>
-        <Navbar />
-        <div className='m-4'>
-          <h2>Users</h2>
-          <table className="table table-info table-bordered">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {users &&
-                users.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.name}</td>
-                    <td>{item.email}</td>
-                    <td>
-                      <span>
-                        <button className="btn btn-primary m-1">Edit</button>
-                      </span>
-                      <span>
-                        <button className="btn btn-primary">Delete</button>
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        </div>
-      </>
-    );
+  const handleEdit = (index) => {
+    localStorage.setItem("currentSelectedUser", JSON.stringify(users[index]));
+    localStorage.setItem("editUserIndex", index);
+    navigate("/edituser");
+  };
+
+  const handleDelete = (index) => {
+    localStorage.setItem("currentSelectedUser", JSON.stringify(users[index]));
+    localStorage.setItem("deleteUserIndex", index);
+  };
+  return (
+    <>
+      <Navbar />
+      <div className="m-4">
+        <h2>Users</h2>
+        <table className="table table-info table-bordered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {users &&
+              users.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.name}</td>
+                  <td>{item.email}</td>
+                  <td>
+                    <span>
+                      <button
+                        className="btn btn-primary m-1"
+                        onClick={() => handleEdit(index)}
+                      >
+                        Edit
+                      </button>
+                    </span>
+                    <span>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => handleDelete(index)}
+                      >
+                        Delete
+                      </button>
+                    </span>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
 }
