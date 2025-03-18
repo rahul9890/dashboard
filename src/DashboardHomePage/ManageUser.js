@@ -10,9 +10,9 @@ export default function ManageUser() {
     return (
       <>
         <Navbar />
-        <div>
+        <div className='m-4'>
           <h2>Users</h2>
-          <table className="table table-info">
+          <table className="table table-info table-bordered">
             <thead>
               <tr>
                 <th>Name</th>
