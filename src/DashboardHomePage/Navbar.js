@@ -20,6 +20,7 @@ export default function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        {/* check if we can use grid here to show column */}
           <ul className="navbar-nav w-100 d-flex">
             <li className="nav-item flex-grow-1  border border-dark border-2 bg-primary">
               <Link

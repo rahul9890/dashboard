@@ -11,6 +11,7 @@ export default function EditUser() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    //use useParam here
     const storedUser = JSON.parse(localStorage.getItem("currentSelectedUser"));
 
     const storedIndex = localStorage.getItem("editUserIndex");
