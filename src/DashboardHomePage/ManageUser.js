@@ -1,39 +1,35 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
-import { Button, Modal } from "react-bootstrap"; 
+import { Button, Modal } from "react-bootstrap";
 
 export default function ManageUser() {
   const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users")));
-
-  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-
- const [indexToDelete, setIndexToDelete] = useState(null);
+  const navigate = useNavigate();
+  const [indexToDelete, setIndexToDelete] = useState(null);
 
   const handleEdit = (index) => {
     navigate(`/edituser/${index}`);
   };
-
   const handleDelete = (index) => {
-    console.log("index:" + index);
-    setShowModal(true);
     setIndexToDelete(index);
+    setShowModal(true);
   };
 
-const confirmDelete = () => {
-  if (indexToDelete !== null) {
-    setUsers((prevUsers) => {
-      const updatedUsers = prevUsers.filter((_, i) => i !== indexToDelete);
-      localStorage.setItem("users", JSON.stringify(updatedUsers));
-      return updatedUsers;
-    });
+  const confirmDelete = () => {
+    const finalUsers = [];
+
+    for (let index in users) {
+      if (parseInt(index) !== indexToDelete) {
+        finalUsers.push(users[index]);
+      }
+    }
+
+    setUsers(finalUsers)
+    localStorage.setItem("users", JSON.stringify(finalUsers));
     setShowModal(false);
-    setIndexToDelete(null); 
-  }
-};
-
-
+  };
 
   return (
     <>
@@ -76,26 +72,45 @@ const confirmDelete = () => {
               ))}
           </tbody>
         </table>
-        
-        {/* delete confirmation model */}
-        <Modal show={showModal} onHide={() => setShowModal(false)}>
-          <Modal.Header closeButton>
-            <Modal.Title>Confirm Deletion</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p>
-              Are you sure you want to delete:<strong>{ (users.length) && (indexToDelete!==null)>0?users[indexToDelete].name:""}</strong>
-            </p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={() => setShowModal(false)}>
-              Cancel
-            </Button>
-            <Button variant="danger" onClick={confirmDelete}>
-              Delete
-            </Button>
-          </Modal.Footer>
-        </Modal>
+
+        {showModal && (
+          <div className="modal fade show d-block" tabindex="-1">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" style={{marginLeft:"30%"}}>Confirm User Deletion</h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    onClick={() => setShowModal(false)}
+                  ></button>
+                </div>
+                <div className="modal-body">
+                  <p>Are you sure ?</p>
+                </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={() => confirmDelete()}
+                  >
+                    Ok
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    onClick={() => setShowModal(false)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
