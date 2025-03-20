@@ -21,7 +21,7 @@ export default function Login() {
       for (let item of users) {
         if (inputEmail === item.email && password === item.password) {
           isLoginSuccessful = true;
-          navigate("/dashboard");
+          navigate("/dashboard",{state:{inputEmail:inputEmail}});
         }
       }
     }

@@ -3,19 +3,17 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Welcomepage from "./LoginAndRegister/Welcomepage";
 import Login from "./LoginAndRegister/Login";
 import Register from "./LoginAndRegister/Register";
-import Dashboard from "./DashboardHomePage/Dashboard";
-import { Provider } from "react-redux";
-import store from "./ReduxStore/store";
-import GroupChat from "./DashboardHomePage/GroupChat";
-import ManageUser from "./DashboardHomePage/ManageUser";
-import ManageDocument from "./DashboardHomePage/ManageDocument";
-import EditUser from "./DashboardHomePage/EditUser";
+import Dashboard from "./Dashboard/Dashboard";
+import GroupChat from "./Dashboard/GroupChat";
+import ManageUser from "./Dashboard/ManageUser";
+import ManageDocument from "./Dashboard/ManageDocument";
+import EditUser from "./Dashboard/EditUser";
 
 
 function App() {
   return (
     <div className="App">
-      <Provider store={store}>
+    
         <Router>
           <Routes>
             <Route path="/" element={<Welcomepage />}></Route>
@@ -29,7 +27,7 @@ function App() {
            
           </Routes>
         </Router>
-      </Provider>
+     
     </div>
   );
 }
