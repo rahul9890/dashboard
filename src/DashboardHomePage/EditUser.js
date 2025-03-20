@@ -27,10 +27,6 @@ export default function EditUser() {
     users[id] = user;
 
     localStorage.setItem("users", JSON.stringify(users));
-
-    localStorage.removeItem("currentSelectedUser");
-    localStorage.removeItem("editUserIndex");
-
     navigate("/manageusers");
   };
 
