@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
-import { Button, Modal } from "react-bootstrap";
+
 
 export default function ManageUser() {
   const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users")));
