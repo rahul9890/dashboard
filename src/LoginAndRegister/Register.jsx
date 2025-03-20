@@ -63,12 +63,11 @@ export default function Register() {
             placeholder="Confirm password"
           />
           <br />
-          <input
-            type="submit"
-            value="Register"
+          <button
+            type="button"
             disabled={isDisabled}
             onClick={handleRegisterClick}
-          />
+          >Register</button>
         </form>
       </div>
     </div>
