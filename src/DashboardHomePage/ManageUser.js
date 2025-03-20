@@ -8,14 +8,14 @@ export default function ManageUser() {
   const navigate = useNavigate();
 
   const handleEdit = (index) => {
-    localStorage.setItem("currentSelectedUser", JSON.stringify(users[index]));
-    localStorage.setItem("editUserIndex", index);
-    navigate("/edituser");
+    
+   
+    navigate(`/edituser/${index}`);
+
   };
 
   const handleDelete = (index) => {
-    localStorage.setItem("currentSelectedUser", JSON.stringify(users[index]));
-    localStorage.setItem("deleteUserIndex", index);
+    
   };
   return (
     <>

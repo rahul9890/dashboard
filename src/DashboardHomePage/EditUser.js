@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function EditUser() {
   const [user, setUser] = useState({
     name: "",
     email: "",
   });
-  const [index, setIndex] = useState(null);
+
   const navigate = useNavigate();
 
+  let { id } = useParams();
+ 
+
   useEffect(() => {
-    //use useParam here
-    const storedUser = JSON.parse(localStorage.getItem("currentSelectedUser"));
-
-    const storedIndex = localStorage.getItem("editUserIndex");
-
-    if (storedUser) {
-      setUser(storedUser);
-      setIndex(storedIndex);
+    const allUsers = JSON.parse(localStorage.getItem("users"));
+    const currentEditUser = allUsers[id];
+    if (currentEditUser) {
+      setUser({ ...currentEditUser });
     }
+    
   }, []);
 
   const handleSave = () => {
     let users = JSON.parse(localStorage.getItem("users")) || [];
-    users[index] = user;
+    users[id] = user;
 
     localStorage.setItem("users", JSON.stringify(users));
 

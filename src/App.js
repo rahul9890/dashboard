@@ -25,7 +25,7 @@ function App() {
             <Route path="/groupchat" element={<GroupChat />}></Route>
             <Route path="/manageusers" element={<ManageUser />}></Route>
             <Route path="/ManageDocuments" element={<ManageDocument />}></Route>
-            <Route path="/edituser" element={<EditUser />}></Route>
+            <Route path="/edituser/:id" element={<EditUser />}></Route>
            
           </Routes>
         </Router>
