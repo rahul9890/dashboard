@@ -1,16 +1,13 @@
 import { React, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import { setEmail } from "../ReduxStore/authSlice";
 
 export default function Login() {
   const navigate = useNavigate();
   const [inputEmail, setInputEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+
   const [isDisabled, setIsDisabled] = useState(true);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     setIsDisabled(!inputEmail || !password);
@@ -18,18 +15,17 @@ export default function Login() {
 
   const handleLoginClick = (e) => {
     e.preventDefault();
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (
-      storedUser &&
-      storedUser.email === inputEmail &&
-      storedUser.password === password
-    ) {
-      console.log("email in login" + inputEmail);
-      dispatch(setEmail(inputEmail));
-      navigate("/dashboard");
-    } else {
-      setError("invalid credentials");
-      console.log(error);
+    const users = JSON.parse(localStorage.getItem("users"));
+    let isLoginSuccessful = false;
+    if (users) {
+      for (let item of users) {
+        if (inputEmail === item.email && password === item.password) {
+          isLoginSuccessful = true;
+          navigate("/dashboard");
+        }
+      }
+    }
+    if (!isLoginSuccessful) {
       alert("invalid credentials");
     }
   };
@@ -46,7 +42,8 @@ export default function Login() {
             id="inputEmail"
             value={inputEmail}
             onChange={(e) => setInputEmail(e.target.value)}
-          placeholder="Enter your email here"/>
+            placeholder="Enter your email here"
+          />
           <br />
           Password:{" "}
           <input
@@ -55,7 +52,8 @@ export default function Login() {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          placeholder="Enter your password here"/>
+            placeholder="Enter your password here"
+          />
           <br />
           <button disabled={isDisabled} onClick={handleLoginClick}>
             Login

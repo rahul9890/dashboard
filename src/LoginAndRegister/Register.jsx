@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const navigate = useNavigate();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -13,21 +14,16 @@ export default function Register() {
       !password || !confirmPassword || password !== confirmPassword
     );
   }, [password, confirmPassword]);
+  //TODO  this register should add data in users item and in login we will check from email and password that user
+  const handleRegisterClick = (e) => {
+    let users = JSON.parse(localStorage.getItem("users"));
+    let newUser = { id: Date.now(), name, email, password };
 
-  const handleRegisterClick = () => {
-    if (email && password) {
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          email,
-          password,
-        })
-      );
-      alert("registration successful");
-      navigate("/");
-    } else {
-      alert("Please enter email and passoword");
-    }
+    let updatedUsers = [...users, newUser];
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+    alert("registration successful");
+    navigate("/");
   };
 
   return (
@@ -36,7 +32,12 @@ export default function Register() {
         <h2>Register</h2>
         <form>
           Fullname:
-          <input type="text" placeholder="Enter your Full Name here" />
+          <input
+            type="text"
+            placeholder="Enter your Full Name here"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
           <br />
           Email:
           <input

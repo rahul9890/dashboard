@@ -20,13 +20,17 @@ export default function ManageUser() {
   const confirmDelete = () => {
     const finalUsers = [];
 
+    //INFO this for loop for understading purpose or we can use here filter method
+    // const finalUsers= [...users].filter((_,index)=>index!==indexToDelete);
+    //The _ (underscore) is a convention in JavaScript that means "ignore this parameter" because we don’t //  need it. In this case, _ represents the actual user object, which we don't need for the condition.
+
     for (let index in users) {
       if (parseInt(index) !== indexToDelete) {
         finalUsers.push(users[index]);
       }
     }
 
-    setUsers(finalUsers)
+    setUsers(finalUsers);
     localStorage.setItem("users", JSON.stringify(finalUsers));
     setShowModal(false);
   };
