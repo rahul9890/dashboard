@@ -21,7 +21,7 @@ export default function Login() {
       for (let item of users) {
         if (inputEmail === item.email && password === item.password) {
           isLoginSuccessful = true;
-          navigate("/dashboard",{state:{inputEmail:inputEmail}});
+          navigate("/dashboard", { state: { inputEmail: inputEmail } });
         }
       }
     }
@@ -39,7 +39,6 @@ export default function Login() {
           <input
             type="text"
             name="inputEmail"
-            id="inputEmail"
             value={inputEmail}
             onChange={(e) => setInputEmail(e.target.value)}
             placeholder="Enter your email here"
@@ -48,8 +47,6 @@ export default function Login() {
           Password:{" "}
           <input
             type="password"
-            name="password"
-            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password here"
