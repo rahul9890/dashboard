@@ -18,7 +18,7 @@ export default function EditUser() {
     if (currentEditUser) {
       setUser({ ...currentEditUser });
     }
-  }, []);
+  }, [id]);
 
   const handleSave = () => {
     let users = JSON.parse(localStorage.getItem("users")) || [];
