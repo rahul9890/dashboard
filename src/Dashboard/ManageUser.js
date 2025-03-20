@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 
-
 export default function ManageUser() {
   const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users")));
   const [showModal, setShowModal] = useState(false);
@@ -82,7 +81,9 @@ export default function ManageUser() {
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title" style={{marginLeft:"30%"}}>Confirm User Deletion</h5>
+                  <h5 className="modal-title" style={{ marginLeft: "30%" }}>
+                    Confirm User Deletion
+                  </h5>
                   <button
                     type="button"
                     className="btn-close"

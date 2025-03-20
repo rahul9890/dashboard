@@ -11,7 +11,6 @@ export default function EditUser() {
   const navigate = useNavigate();
 
   let { id } = useParams();
- 
 
   useEffect(() => {
     const allUsers = JSON.parse(localStorage.getItem("users"));
@@ -19,7 +18,6 @@ export default function EditUser() {
     if (currentEditUser) {
       setUser({ ...currentEditUser });
     }
-    
   }, []);
 
   const handleSave = () => {

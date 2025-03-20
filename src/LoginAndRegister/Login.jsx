@@ -6,7 +6,6 @@ export default function Login() {
   const navigate = useNavigate();
   const [inputEmail, setInputEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
