@@ -20,6 +20,7 @@ export default function Login() {
       for (let item of users) {
         if (inputEmail === item.email && password === item.password) {
           isLoginSuccessful = true;
+          //TODO create loggedin user localstorage and store logged in user info
           navigate("/dashboard", { state: { inputEmail: inputEmail } });
         }
       }

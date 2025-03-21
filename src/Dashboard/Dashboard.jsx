@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 
 export default function Dashboard() {
   const location = useLocation();
+  //TODO naviagte to welcome
   const inputEmail = location.state?.inputEmail || "Guest";
 
   return (

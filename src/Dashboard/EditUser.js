@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function EditUser() {
-  const [user, setUser] = useState({
+  const [updatedUser, setUpdatedUser] = useState({
     name: "",
     email: "",
   });
@@ -14,16 +14,21 @@ export default function EditUser() {
 
   useEffect(() => {
     const allUsers = JSON.parse(localStorage.getItem("users"));
-    const currentEditUser = allUsers[id];
+    const currentEditUser = allUsers.find((user) => user.id === +id);
+    debugger;
     if (currentEditUser) {
-      setUser({ ...currentEditUser });
+      setUpdatedUser({ ...currentEditUser });
     }
   }, [id]);
 
   const handleSave = () => {
     let users = JSON.parse(localStorage.getItem("users")) || [];
-    users[id] = user;
-
+   
+   users = users.map((user) =>
+     user.id === +id ? { ...user, ...updatedUser } : user
+   );
+   
+    //TODO user id dont use index
     localStorage.setItem("users", JSON.stringify(users));
     navigate("/manageusers");
   };
@@ -36,14 +41,18 @@ export default function EditUser() {
         <label>Full Name:</label>
         <input
           type="text"
-          value={user.name}
-          onChange={(e) => setUser({ ...user, name: e.target.value })}
+          value={updatedUser.name}
+          onChange={(e) =>
+            setUpdatedUser({ ...updatedUser, name: e.target.value })
+          }
         />
         <label>Email:</label>
         <input
           type="email"
-          value={user.email}
-          onChange={(e) => setUser({ ...user, email: e.target.value })}
+          value={updatedUser.email}
+          onChange={(e) =>
+            setUpdatedUser({ ...updatedUser, email: e.target.value })
+          }
         />
         <button className="btn btn-success" onClick={handleSave}>
           Save

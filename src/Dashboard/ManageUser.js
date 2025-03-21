@@ -8,11 +8,11 @@ export default function ManageUser() {
   const navigate = useNavigate();
   const [indexToDelete, setIndexToDelete] = useState(null);
 
-  const handleEdit = (index) => {
-    navigate(`/edituser/${index}`);
+  const handleEdit = (id) => {
+    navigate(`/edituser/${id}`);
   };
-  const handleDelete = (index) => {
-    setIndexToDelete(index);
+  const handleDelete = (id) => {
+    setIndexToDelete(id);
     setShowModal(true);
   };
 
@@ -24,13 +24,14 @@ export default function ManageUser() {
     //The _ (underscore) is a convention in JavaScript that means "ignore this parameter" because we don’t //  need it. In this case, _ represents the actual user object, which we don't need for the condition.
 
     for (let index in users) {
-      if (parseInt(index) !== indexToDelete) {
+      if (parseInt(users[index].id) !== +indexToDelete) {
         finalUsers.push(users[index]);
       }
     }
 
     setUsers(finalUsers);
     localStorage.setItem("users", JSON.stringify(finalUsers));
+    debugger;
     setShowModal(false);
   };
 
@@ -57,7 +58,7 @@ export default function ManageUser() {
                     <span>
                       <button
                         className="btn btn-primary m-1"
-                        onClick={() => handleEdit(index)}
+                        onClick={() => handleEdit(item.id)}
                       >
                         Edit
                       </button>
@@ -65,7 +66,7 @@ export default function ManageUser() {
                     <span>
                       <button
                         className="btn btn-primary"
-                        onClick={() => handleDelete(index)}
+                        onClick={() => handleDelete(item.id)}
                       >
                         Delete
                       </button>

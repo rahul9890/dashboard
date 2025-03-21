@@ -16,8 +16,11 @@ export default function Register() {
   }, [password, confirmPassword]);
   //TODO  this register should add data in users item and in login we will check from email and password that user
   const handleRegisterClick = (e) => {
-    let users = JSON.parse(localStorage.getItem("users"));
+    let users = localStorage.getItem("users")
+      ? JSON.parse(localStorage.getItem("users"))
+      : [];
     let newUser = { id: Date.now(), name, email, password };
+
 
     let updatedUsers = [...users, newUser];
     localStorage.setItem("users", JSON.stringify(updatedUsers));
