@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getAllUsersFromStorage, saveAllUpdatedUser } from "../Utils/LocalStorageUtils.js";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -16,15 +17,12 @@ export default function Register() {
   }, [password, confirmPassword]);
   //TODO  this register should add data in users item and in login we will check from email and password that user
   const handleRegisterClick = (e) => {
-    let users = localStorage.getItem("users")
-      ? JSON.parse(localStorage.getItem("users"))
-      : [];
+    let users = getAllUsersFromStorage();
     let newUser = { id: Date.now(), name, email, password };
 
 
     let updatedUsers = [...users, newUser];
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-
+    saveAllUpdatedUser(updatedUsers);
     alert("registration successful");
     navigate("/");
   };
