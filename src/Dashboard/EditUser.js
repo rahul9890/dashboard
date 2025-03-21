@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { useNavigate, useParams } from "react-router-dom";
-
+import {
+  getAllUsersFromStorage,
+  saveAllUpdatedUser,
+} from "../Utils/LocalStorageUtils.js";
 export default function EditUser() {
   const [updatedUser, setUpdatedUser] = useState({
     name: "",
@@ -13,7 +16,7 @@ export default function EditUser() {
   let { id } = useParams();
 
   useEffect(() => {
-    const allUsers = JSON.parse(localStorage.getItem("users"));
+    const allUsers = getAllUsersFromStorage();
     const currentEditUser = allUsers.find((u) => u.id === +id);
     debugger;
     if (currentEditUser) {
@@ -22,12 +25,12 @@ export default function EditUser() {
   }, [id]);
 
   const handleSave = () => {
-    let users = JSON.parse(localStorage.getItem("users")) || [];
+    let users = getAllUsersFromStorage();
 
     users = users.map((u) => (u.id === +id ? { ...u, ...updatedUser } : u));
 
     //TODO user id dont use index
-    localStorage.setItem("users", JSON.stringify(users));
+    saveAllUpdatedUser(users);
     navigate("/manageusers");
   };
 

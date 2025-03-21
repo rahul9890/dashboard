@@ -1,7 +1,10 @@
 import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
-
+import {
+  getAllUsersFromStorage,
+  saveAllUpdatedUser,
+} from "../Utils/LocalStorageUtils.js";
 export default function Login() {
   const navigate = useNavigate();
   const [inputEmail, setInputEmail] = useState("");
@@ -14,7 +17,7 @@ export default function Login() {
 
   const handleLoginClick = (e) => {
     e.preventDefault();
-    const users = JSON.parse(localStorage.getItem("users"));
+    const users = getAllUsersFromStorage();
     let isLoginSuccessful = false;
     if (users) {
       for (let item of users) {

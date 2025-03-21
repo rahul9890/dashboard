@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 
+import {
+  getAllUsersFromStorage,
+  saveAllUpdatedUser,
+} from "../Utils/LocalStorageUtils.js";
 export default function ManageUser() {
-  const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users")));
+  const [users, setUsers] = useState(getAllUsersFromStorage());
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const [indexToDelete, setIndexToDelete] = useState(null);
@@ -30,8 +34,8 @@ export default function ManageUser() {
     }
 
     setUsers(finalUsers);
-    localStorage.setItem("users", JSON.stringify(finalUsers));
-    debugger;
+   saveAllUpdatedUser(finalUsers);
+
     setShowModal(false);
   };
 
