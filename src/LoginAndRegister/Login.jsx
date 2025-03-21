@@ -1,10 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
-import {
-  getAllUsersFromStorage,
-  saveAllUpdatedUser,
-} from "../Utils/LocalStorageUtils.js";
+import { getAllUsersFromStorage } from "../Utils/LocalStorageUtils.js";
 export default function Login() {
   const navigate = useNavigate();
   const [inputEmail, setInputEmail] = useState("");
@@ -18,17 +15,17 @@ export default function Login() {
   const handleLoginClick = (e) => {
     e.preventDefault();
     const users = getAllUsersFromStorage();
-    let isLoginSuccessful = false;
+    let loggedInUser;
     if (users) {
       for (let item of users) {
         if (inputEmail === item.email && password === item.password) {
-          isLoginSuccessful = true;
-          //TODO create loggedin user localstorage and store logged in user info
+          loggedInUser = item;
+          localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
           navigate("/dashboard", { state: { inputEmail: inputEmail } });
         }
       }
     }
-    if (!isLoginSuccessful) {
+    if (!loggedInUser) {
       alert("invalid credentials");
     }
   };

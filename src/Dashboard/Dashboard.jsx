@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
   const location = useLocation();
-  //TODO naviagte to welcome
+  const navigate = useNavigate();
+  useEffect(() => {
+    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!loggedInUser) {
+      navigate("/");
+    }
+  });
+
   const inputEmail = location.state?.inputEmail || "Guest";
 
   return (

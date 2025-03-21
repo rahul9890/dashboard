@@ -1,7 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("loggedInUser");
+    navigate("/");
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -48,7 +55,11 @@ export default function Navbar() {
             </li>
 
             <li className="nav-item flex-grow-1 border border-dark border-2 bg-primary">
-              <Link className="btn btn-primary mx-1" aria-current="page" to="/">
+              <Link
+                className="btn btn-primary mx-1"
+                aria-current="page"
+                onClick={() => handleLogout()}
+              >
                 LogOut
               </Link>
             </li>
