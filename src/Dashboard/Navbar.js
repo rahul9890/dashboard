@@ -5,7 +5,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("loggedInUser");
+   localStorage.removeItem("loggedInUser");
     navigate("/");
   };
 
@@ -55,13 +55,13 @@ export default function Navbar() {
             </li>
 
             <li className="nav-item flex-grow-1 border border-dark border-2 bg-primary">
-              <Link
+              <button
                 className="btn btn-primary mx-1"
                 aria-current="page"
-                onClick={ handleLogout}
+              onClick={()=>handleLogout()}
               >
                 LogOut
-              </Link>
+              </button>
             </li>
           </ul>
         </div>
