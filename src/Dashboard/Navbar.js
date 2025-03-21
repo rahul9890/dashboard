@@ -58,7 +58,7 @@ export default function Navbar() {
               <Link
                 className="btn btn-primary mx-1"
                 aria-current="page"
-                onClick={() => handleLogout()}
+                onClick={ handleLogout}
               >
                 LogOut
               </Link>
