@@ -14,7 +14,7 @@ export default function EditUser() {
 
   useEffect(() => {
     const allUsers = JSON.parse(localStorage.getItem("users"));
-    const currentEditUser = allUsers.find((user) => user.id === +id);
+    const currentEditUser = allUsers.find((u) => u.id === +id);
     debugger;
     if (currentEditUser) {
       setUpdatedUser({ ...currentEditUser });
@@ -23,11 +23,9 @@ export default function EditUser() {
 
   const handleSave = () => {
     let users = JSON.parse(localStorage.getItem("users")) || [];
-   
-   users = users.map((user) =>
-     user.id === +id ? { ...user, ...updatedUser } : user
-   );
-   
+
+    users = users.map((u) => (u.id === +id ? { ...u, ...updatedUser } : u));
+
     //TODO user id dont use index
     localStorage.setItem("users", JSON.stringify(users));
     navigate("/manageusers");
