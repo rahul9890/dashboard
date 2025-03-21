@@ -34,7 +34,7 @@ export default function ManageUser() {
     }
 
     setUsers(finalUsers);
-   saveAllUpdatedUser(finalUsers);
+    saveAllUpdatedUser(finalUsers);
 
     setShowModal(false);
   };

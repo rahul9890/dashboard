@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAllUsersFromStorage, saveAllUpdatedUser } from "../Utils/LocalStorageUtils.js";
+import {
+  getAllUsersFromStorage,
+  saveAllUpdatedUser,
+} from "../Utils/LocalStorageUtils.js";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -19,7 +22,6 @@ export default function Register() {
   const handleRegisterClick = (e) => {
     let users = getAllUsersFromStorage();
     let newUser = { id: Date.now(), name, email, password };
-
 
     let updatedUsers = [...users, newUser];
     saveAllUpdatedUser(updatedUsers);
@@ -68,7 +70,9 @@ export default function Register() {
             type="button"
             disabled={isDisabled}
             onClick={handleRegisterClick}
-          >Register</button>
+          >
+            Register
+          </button>
         </form>
       </div>
     </div>

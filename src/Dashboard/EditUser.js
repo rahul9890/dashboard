@@ -26,10 +26,7 @@ export default function EditUser() {
 
   const handleSave = () => {
     let users = getAllUsersFromStorage();
-
     users = users.map((u) => (u.id === +id ? { ...u, ...updatedUser } : u));
-
-    //TODO user id dont use index
     saveAllUpdatedUser(users);
     navigate("/manageusers");
   };
