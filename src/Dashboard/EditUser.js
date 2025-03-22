@@ -39,11 +39,16 @@ export default function EditUser() {
         <label>Full Name:</label>
         <input
           type="text"
-          value={updatedUser.name}
-          onChange={(e) =>
-            setUpdatedUser({ ...updatedUser, name: e.target.value })
-          }
+      
+          value={updatedUser.name} // <-- Bind value to state
+          onChange={(e) => {
+            setUpdatedUser((prev) => ({
+              ...prev,
+              name: e.target.value, // <-- Update only the "name" field
+            }));
+          }}
         />
+
         <label>Email:</label>
         <input
           type="email"
