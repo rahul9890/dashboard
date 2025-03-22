@@ -12,8 +12,8 @@ export default function ManageUser() {
   const navigate = useNavigate();
   const [indexToDelete, setIndexToDelete] = useState(null);
 
-  const handleEdit = (id) => {
-    navigate(`/edituser/${id}`);
+  const handleEdit = (item) => {
+    navigate(`/edituser/${item.id}`);
   };
   const handleDelete = (id) => {
     setIndexToDelete(id);
@@ -54,15 +54,15 @@ export default function ManageUser() {
           </thead>
           <tbody>
             {users &&
-              users.map((item, index) => (
-                <tr key={index}>
+              users.map((item) => (
+                <tr key={item.id}>
                   <td>{item.name}</td>
                   <td>{item.email}</td>
                   <td>
                     <span>
                       <button
                         className="btn btn-primary m-1"
-                        onClick={() => handleEdit(item.id)}
+                        onClick={() => handleEdit(item)}
                       >
                         Edit
                       </button>
