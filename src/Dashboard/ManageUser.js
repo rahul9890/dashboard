@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 
@@ -6,11 +6,22 @@ import {
   getAllUsersFromStorage,
   saveAllUpdatedUser,
 } from "../Utils/LocalStorageUtils.js";
+import { useSelector } from "react-redux";
 export default function ManageUser() {
   const [users, setUsers] = useState(getAllUsersFromStorage());
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const [indexToDelete, setIndexToDelete] = useState(null);
+
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  useEffect(() => {
+    
+  if (!isAuthenticated) {
+    navigate("/");
+  }
+  },[isAuthenticated,navigate])
+
 
   const handleEdit = (item) => {
     navigate(`/edituser/${item.id}`);

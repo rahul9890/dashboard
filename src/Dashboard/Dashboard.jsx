@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Dashboard() {
   const location = useLocation();
   const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   useEffect(() => {
-    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-    if (!loggedInUser) {
+   
+    if (!isAuthenticated) {
       navigate("/");
     }
   });

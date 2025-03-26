@@ -2,6 +2,9 @@ import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 import { getAllUsersFromStorage } from "../Utils/LocalStorageUtils.js";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/authSlice.js";
+
 export default function Login() {
   const navigate = useNavigate();
   const [inputEmail, setInputEmail] = useState("");
@@ -12,6 +15,7 @@ export default function Login() {
     setIsDisabled(!inputEmail || !password);
   }, [inputEmail, password]);
 
+  const dispatch = useDispatch();
   const handleLoginClick = (e) => {
     e.preventDefault();
     const users = getAllUsersFromStorage();
@@ -21,6 +25,7 @@ export default function Login() {
         if (inputEmail === item.email && password === item.password) {
           loggedInUser = item;
           localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+          dispatch(login());
           navigate("/dashboard", { state: { inputEmail: inputEmail } });
         }
       }

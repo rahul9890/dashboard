@@ -1,10 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-
+import { logout } from "../redux/authSlice";
 export default function Navbar() {
   const navigate = useNavigate();
 
+  const dispatch = useDispatch();
   const handleLogout = () => {
+    dispatch(logout());
    localStorage.removeItem("loggedInUser");
     navigate("/");
   };
